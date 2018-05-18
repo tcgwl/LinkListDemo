@@ -51,20 +51,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn09.setOnClickListener(this);
         btn10.setOnClickListener(this);
         btn11.setOnClickListener(this);
+
+        getLinkList();
     }
 
     private <T extends View> T findView(int resId) {
         return (T) findViewById(resId);
     }
 
+    private LinkList getLinkList() {
+        if (linkList == null) {
+            linkList = new LinkList();
+            for (int i = 0; i < LINKLIST_LENGTH; i++) {
+                linkList.add(i);
+            }
+        }
+        return linkList;
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn01:
-                linkList = new LinkList();
-                for (int i = 0; i < LINKLIST_LENGTH; i++) {
-                    linkList.add(i);
-                }
                 //从head节点开始遍历输出
                 linkList.print(linkList.head);
                 break;
@@ -86,18 +94,80 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
             case R.id.btn05:
+                LinkList list05_1 = new LinkList();
+                LinkList list05_2 = new LinkList();
+                //向LinkList中添加数据
+                for (int i = 0; i < 4; i++) {
+                    list05_1.add(i);
+                }
+                for (int i = 3; i < 8; i++) {
+                    list05_2.add(i);
+                }
+                list05_1.print(list05_1.head);
+                list05_2.print(list05_2.head);
+
+                LinkList list3 = new LinkList();
+                list3.head = LinkListUtil.mergeLinkList(list05_1.head, list05_2.head);
+                list3.print(list3.head);
                 break;
             case R.id.btn06:
+                LinkList reverseList = new LinkList();
+                reverseList.head = LinkListUtil.reverseList(linkList.head);
+                reverseList.print(reverseList.head);
                 break;
             case R.id.btn07:
+                LinkListUtil.reversePrintWithSystemStack(linkList.head);
                 break;
             case R.id.btn08:
+                linkList.add(linkList.head);//添加这行代码有环，否则无环
+                System.out.println("判断单链表是否有环: " + LinkListUtil.hasCycle(linkList.head));
                 break;
             case R.id.btn09:
+                LinkList list09 = new LinkList();
+                Node second = null;//把第二个结点记下来
+                for (int i = 0; i < 4; i++) {
+                    list09.add(i);
+                    if (i == 1) {
+                        second = list09.current;
+                    }
+                }
+                list09.add(second);
+
+//                list09.add(list09.head);
+                Node cycleNode = LinkListUtil.hasCycle2(list09.head);
+                if (cycleNode != null) {
+                    int cycleLength = LinkListUtil.getCycleLength(list09.head, cycleNode);
+                    System.out.println("环的长度为: " + cycleLength);
+                }
                 break;
             case R.id.btn10:
+                LinkList list10 = new LinkList();
+                Node third = null;
+                for (int i = 1; i < 7; i++) {
+                    list10.add(i);
+                    if (i == 3) {
+                        third = list10.current;
+                    }
+                }
+                list10.add(third);
+                Node cycleNode1 = LinkListUtil.hasCycle2(list10.head);
+                if (cycleNode1 != null) {
+                    int cycleLength1 = LinkListUtil.getCycleLength(list10.head, cycleNode1);
+                    Node cycleStartNode = LinkListUtil.getCycleStart(list10.head, cycleLength1);
+                    if (cycleStartNode != null) {
+                        System.out.println("环的起始点是: " + cycleStartNode.data);
+                    }
+                }
                 break;
             case R.id.btn11:
+                LinkList list11_1 = new LinkList();
+                LinkList list11_2 = new LinkList();
+                list11_1.add(1).add(2).add(3).add(6).add(7);
+                list11_2.add(4).add(5).add(6).add(7);
+                Node firstCommonNode = LinkListUtil.getFirstCommonNode2(list11_1.head, list11_2.head);
+                if (firstCommonNode != null) {
+                    System.out.println("两个单链表相交的第一个交点为: " + firstCommonNode.data);
+                }
                 break;
             default:
                 break;

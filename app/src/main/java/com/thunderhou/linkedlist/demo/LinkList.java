@@ -7,12 +7,12 @@ import com.thunderhou.linkedlist.demo.bean.Node;
  */
 public class LinkList {
     public Node head;//头节点
-    private Node current;//当前节点的索引
+    public Node current;//当前节点的索引
 
     /**
      * 向链表中添加数据
      */
-    public void add(int data) {
+    public LinkList add(int data) {
         //判断链表为空的时候
         if (head == null) {//如果头节点为空，说明这个链表还没有创建，那就把新的节点赋值给头节点
             head = new Node(data);
@@ -23,6 +23,25 @@ public class LinkList {
             //把链表的当前索引向后移动一位
             current = current.next;//此次操作完成后，current节点指向新节点
         }
+
+        return this;
+    }
+
+    /**
+     * 方法重载：向链表中添加结点
+     */
+    public LinkList add(Node node) {
+        if (node == null) return this;
+
+        if (head == null) {
+            head = node;
+            current = head;
+        } else {
+            current.next = node;
+            current = current.next;
+        }
+
+        return this;
     }
 
     /**
@@ -35,12 +54,14 @@ public class LinkList {
             return;
         }
 
+        StringBuilder stringBuilder = new StringBuilder();
         current = node;
         while (current != null) {
-            System.out.print(current.data+"->");
+            stringBuilder.append(current.data+"->");
             current = current.next;
         }
-        System.out.println("NULL");
+        String result = stringBuilder.toString();
+        System.out.println(result.substring(0, result.lastIndexOf("->")));
     }
 
 }

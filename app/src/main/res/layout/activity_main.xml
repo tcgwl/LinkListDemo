@@ -1,75 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="5dp"
-    tools:context="com.thunderhou.linkedlist.demo.MainActivity">
+    android:scrollbars="none">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="链表面试题Java实现"
-        android:textSize="16sp"
-        android:textColor="#000"
-        android:layout_gravity="center_horizontal"/>
+        android:orientation="vertical"
+        android:padding="5dp">
 
-    <Button
-        android:id="@+id/btn01"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="1.单链表的创建和遍历"/>
-    <Button
-        android:id="@+id/btn02"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="2.求单链表中节点的个数"/>
-    <Button
-        android:id="@+id/btn03"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="3.查找单链表中的倒数第k个结点"/>
-    <Button
-        android:id="@+id/btn04"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="4.查找单链表中的中间结点"/>
-    <Button
-        android:id="@+id/btn05"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="5.合并两个有序的单链表，合并之后的链表依然有序"/>
-    <Button
-        android:id="@+id/btn06"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="6.单链表的反转【出现频率最高】"/>
-    <Button
-        android:id="@+id/btn07"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="7.从尾到头打印单链表"/>
-    <Button
-        android:id="@+id/btn08"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="8.判断单链表是否有环"/>
-    <Button
-        android:id="@+id/btn09"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="9.取出有环链表中，环的长度"/>
-    <Button
-        android:id="@+id/btn10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="10.单链表中，取出环的起始点"/>
-    <Button
-        android:id="@+id/btn11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="11.判断两个单链表相交的第一个交点"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="链表面试题Java实现"
+            android:textSize="16sp"
+            android:textColor="#000"
+            android:layout_gravity="center_horizontal"/>
 
-</LinearLayout>
+        <Button
+            android:id="@+id/btn01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1.单链表的创建和遍历"/>
+        <Button
+            android:id="@+id/btn02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2.求单链表中节点的个数"/>
+        <Button
+            android:id="@+id/btn03"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3.查找单链表中的倒数第k个结点"/>
+        <Button
+            android:id="@+id/btn04"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4.查找单链表中的中间结点"/>
+        <Button
+            android:id="@+id/btn05"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5.合并两个有序的单链表，合并之后的链表依然有序"/>
+        <Button
+            android:id="@+id/btn06"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="6.单链表的反转【出现频率最高】"/>
+        <Button
+            android:id="@+id/btn07"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="7.从尾到头打印单链表"/>
+        <Button
+            android:id="@+id/btn08"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="8.判断单链表是否有环"/>
+        <Button
+            android:id="@+id/btn09"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="9.取出有环链表中，环的长度"/>
+        <Button
+            android:id="@+id/btn10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10.单链表中，取出环的起始点"/>
+        <Button
+            android:id="@+id/btn11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="11.判断两个单链表相交的第一个交点"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"/>
+
+    </LinearLayout>
+
+</ScrollView>
