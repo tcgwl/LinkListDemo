@@ -11,6 +11,8 @@ import java.util.Stack;
 public class LinkListUtil {
     /**
      * 获取单链表的长度
+     *
+     * 时间复杂度为O(n)
      */
     public static int getLength(Node head) {
         if (head == null) {
@@ -27,6 +29,8 @@ public class LinkListUtil {
 
     /**
      * 查找单链表中的倒数第index个节点(简单版)
+     *
+     * 时间复杂度为O(n)
      */
     public static Node findLastNodeSimple(Node head, int index) {
         if (head == null) return null;
@@ -46,6 +50,8 @@ public class LinkListUtil {
 
     /**
      * 查找单链表中的倒数第index个节点(进阶版)
+     *
+     * 时间复杂度为O(n)
      */
     public static Node findLastNodeFinal(Node head, int index) {
         if (index == 0 || head == null) return null;
@@ -73,6 +79,8 @@ public class LinkListUtil {
 
     /**
      * 查找链表的中间节点
+     *
+     * 时间复杂度为O(n)
      */
     public static Node findMidNode(Node head) {
         if (head == null) return null;
@@ -90,6 +98,8 @@ public class LinkListUtil {
 
     /**
      * 合并两个有序的单链表，合并之后的链表依然有序
+     *
+     * 时间复杂度为O(max(len1,len2))
      */
     public static Node mergeLinkList(Node head1, Node head2) {
         if (head1 == null && head2 == null) return null;
@@ -134,6 +144,8 @@ public class LinkListUtil {
 
     /**
      * 单链表的反转
+     *
+     * 时间复杂度为O(n)
      */
     public static Node reverseList(Node head) {
         //如果链表为空或者只有一个节点，无需反转，直接返回原链表的头节点
@@ -159,6 +171,8 @@ public class LinkListUtil {
     /**
      * 从尾到头打印单链表(使用自己创建的栈)
      * 考虑到"后进先出"，使用栈
+     *
+     * 时间复杂度为O(n)
      */
     public static void reversePrint(Node head) {
         if (head == null) {
@@ -167,9 +181,9 @@ public class LinkListUtil {
 
         Stack<Node> stack = new Stack<>();
         Node current = head;
-        //将链表的所有结点压栈
+        //将链表的所有节点压栈
         while (current != null) {
-            stack.push(current);//将当前结点压栈
+            stack.push(current);//将当前节点压栈
             current = current.next;
         }
 
@@ -183,7 +197,6 @@ public class LinkListUtil {
 
     /**
      * 从尾到头打印单链表(使用系统的栈，递归)
-     * @param head
      */
     public static void reversePrintWithSystemStack(Node head) {
         if (head == null) {
@@ -197,6 +210,8 @@ public class LinkListUtil {
     /**
      * 判断单链表是否有环
      * 这里也是用到两个指针，如果一个链表有环，那么用一个指针去遍历，是永远走不到头的
+     *
+     * 时间复杂度为O(n)
      */
     public static boolean hasCycle(Node head) {
         if (head == null) return false;
@@ -216,7 +231,7 @@ public class LinkListUtil {
     }
 
     /**
-     * 判断单链表是否有环。返回的结点是相遇的那个结点
+     * 判断单链表是否有环。返回的节点是相遇的那个节点
      */
     public static Node hasCycle2(Node head) {
         if (head == null) return null;
@@ -236,7 +251,7 @@ public class LinkListUtil {
     }
 
     /**
-     * 有环链表中，获取环的长度。参数node代表的是相遇的那个结点
+     * 有环链表中，获取环的长度。参数node代表的是相遇的那个节点
      */
     public static int getCycleLength(Node head, Node node) {
         if (head == null) return 0;
@@ -247,7 +262,7 @@ public class LinkListUtil {
         while (current != null) {
             current = current.next;
             length++;
-            if (current == node) {//当current结点走到原点的时候
+            if (current == node) {//当current节点走到原点的时候
                 return length;
             }
         }
@@ -261,7 +276,7 @@ public class LinkListUtil {
      * 拿到环的长度length之后，需要用到两个指针变量first和second，
      * 先让second指针走length步；
      * 然后让first指针和second指针同时各走一步，
-     * 当两个指针相遇时，相遇时的结点就是环的起始点。
+     * 当两个指针相遇时，相遇时的节点就是环的起始点。
      */
     public static Node getCycleStart(Node head, int cycleLength) {
         if (head == null) {
@@ -279,7 +294,7 @@ public class LinkListUtil {
             first = first.next;
             second = second.next;
 
-            if (first == second) {//如果两个指针相遇了，说明这个结点就是环的起始点
+            if (first == second) {//如果两个指针相遇了，说明这个节点就是环的起始点
                 return first;
             }
         }
@@ -290,14 +305,16 @@ public class LinkListUtil {
     /**
      * 判断两个单链表相交的第一个交点(利用"栈"的"后进先出"特点)
      *
-     * 分别把两个链表的结点放入两个栈中，这样两个链表的尾结点就位于两个栈的栈顶，
-     * 接下来比较下一个栈顶，直到找到最后一个相同的结点
+     * 分别把两个链表的节点放入两个栈中，这样两个链表的尾节点就位于两个栈的栈顶，
+     * 接下来比较下一个栈顶，直到找到最后一个相同的节点
+     *
+     * 利用两个辅助栈，空间复杂度是O(len1+len2)，时间复杂度是O(len1+len2)
      */
     public static Node getFirstCommonNode(Node head1, Node head2) {
         if (head1 == null || head2 == null) {
             return null;
         }
-        //分别把两个链表的结点放入两个栈中，这样两个链表的尾结点就位于两个栈的栈顶
+        //分别把两个链表的节点放入两个栈中，这样两个链表的尾节点就位于两个栈的栈顶
         Stack<Node> stack1 = new Stack<>();
         Stack<Node> stack2 = new Stack<>();
         Node current = head1;
@@ -323,11 +340,13 @@ public class LinkListUtil {
     }
 
     /**
-     * 判断两个链表相交的第一个结点：用到快慢指针，推荐（更优解）
+     * 判断两个链表相交的第一个节点：用到快慢指针，推荐（更优解）
      *
      * 首先遍历两个链表得到它们的长度。
      * 在第二次遍历的之前，在较长的链表上走 |len1-len2| 步，
-     * 接着再同时在两个链表上遍历，找到的第一个相同的结点就是它们的第一个交点。
+     * 接着再同时在两个链表上遍历，找到的第一个相同的节点就是它们的第一个交点。
+     *
+     * 这种思路的时间复杂度也是O(len1+len2)，但是我们不再需要辅助栈，因此提高了空间效率
      */
     public static Node getFirstCommonNode2(Node head1, Node head2) {
         if (head1 == null || head2 == null) {
@@ -355,7 +374,7 @@ public class LinkListUtil {
         }
         //将两个链表的指针同时向前移动
         while (longHead != null && shortHead != null) {
-            if (longHead.data == shortHead.data) {//第一个相同的结点就是相交的第一个结点
+            if (longHead.data == shortHead.data) {//第一个相同的节点就是相交的第一个节点
                 return longHead;
             }
 
